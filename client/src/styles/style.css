@@ -1,0 +1,438 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #f4f6f8;
+    color: #1e2a3a;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ── */
+.entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #fff;
+    border-bottom: 1px solid #e0e5ea;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.entete h1 {
+    font-size: 1.35rem;
+    color: #b8322a;
+}
+
+.entete nav a {
+    text-decoration: none;
+    color: #5a6a7a;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.entete nav a.actif,
+.entete nav a:hover {
+    background: #b8322a;
+    color: #fff;
+}
+
+/* ── Main App (FOrm + Cart) ── */
+.contenu-principal {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+}
+
+@media (max-width: 800px) {
+  .contenu-principal {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+  }
+}
+
+/* ── Invoice Form ── */
+.formulaire {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.formulaire h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    color: #2c3e50;
+}
+
+.filtre {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eef1f4;
+}
+
+.filtre label,
+.champ label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #5a6a7a;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.filtre select,
+.champ select,
+.champ input {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fafbfc;
+    transition: 0.2s;
+}
+
+.filtre select:focus,
+.champ select:focus,
+.champ input:focus {
+    outline: none;
+    border-color: #b8322a;
+    box-shadow: 0 0 0 3px rgba(184, 50, 42, 0.1);
+}
+
+.champ {
+    margin-bottom: 1rem;
+}
+
+.apercu {
+    font-size: 0.9rem;
+    color: #5a6a7a;
+    margin: 0.75rem 0;
+}
+
+.btn-ajouter {
+    width: 100%;
+    padding: 0.75rem;
+    background: #b8322a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: 0.2s;
+}
+
+.btn-ajouter:hover {
+    background: #9a2820;
+}
+
+/* ── Cart (aside) ── */
+.panier {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    height: fit-content;
+    position: sticky;
+    top: 1rem;
+}
+
+.panier h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.vide {
+    color: #8a9aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.liste-panier {
+    list-style: none;
+    margin-bottom: 1rem;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.liste-panier li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #eef1f4;
+    gap: 0.5rem;
+}
+
+.liste-panier .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.liste-panier .nom {
+    font-size: 0.88rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.liste-panier .detail {
+    font-size: 0.78rem;
+    color: #7a8a9a;
+}
+
+.liste-panier .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.btn-suppr {
+    background: none;
+    border: none;
+    color: #c0392b;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.btn-suppr:hover {
+    background: #fde8e8;
+}
+
+.totaux {
+    border-top: 2px solid #eef1f4;
+    padding-top: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.totaux div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    padding: 0.25rem 0;
+    color: #5a6a7a;
+}
+
+.totaux .ttc {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #b8322a;
+    border-top: 1px solid #eef1f4;
+    padding-top: 0.6rem;
+    margin-top: 0.3rem;
+}
+
+.btn-facture {
+    width: 100%;
+    padding: 0.8rem;
+    background: #1e7e34;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-facture:hover {
+    background: #166528;
+}
+
+/* ── Invoice Page ── */
+.invoice {
+    padding-bottom: 3rem;
+}
+
+.facture-boite {
+    max-width: 780px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.facture-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #b8322a;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.facture-entete h2 {
+    color: #b8322a;
+    font-size: 1.3rem;
+}
+
+.facture-entete p {
+    font-size: 0.85rem;
+    color: #5a6a7a;
+}
+
+.facture-meta {
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.table-facture {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.table-facture th {
+    text-align: left;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 2px solid #eef1f4;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #7a8a9a;
+    letter-spacing: 0.04em;
+}
+
+.table-facture td {
+    padding: 0.65rem 0.5rem;
+    border-bottom: 1px solid #f0f3f6;
+}
+
+.table-facture td:nth-child(2),
+.table-facture td:nth-child(3),
+.table-facture td:nth-child(4),
+.table-facture th:nth-child(2),
+.table-facture th:nth-child(3),
+.table-facture th:nth-child(4) {
+    text-align: right;
+}
+
+.facture-totaux {
+    margin-left: auto;
+    width: 280px;
+    margin-bottom: 2rem;
+}
+
+.facture-totaux div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: #5a6a7a;
+}
+
+.facture-totaux .ttc {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #b8322a;
+    border-top: 2px solid #eef1f4;
+    padding-top: 0.6rem;
+    margin-top: 0.3rem;
+}
+
+/* ── Cash Out ── */
+.remboursement {
+    background: #f8fafb;
+    border: 1px dashed #c0ccd8;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.remboursement h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.remboursement p {
+    font-size: 0.9rem;
+    color: #5a6a7a;
+    margin-bottom: 0.75rem;
+}
+
+.btn-rembourser {
+    padding: 0.6rem 1.4rem;
+    background: #f0ad4e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-rembourser:hover {
+    background: #d99a3e;
+}
+
+.rembourse-ok {
+    background: #e6f7ea;
+    color: #1e7e34;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.facture-pied {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eef1f4;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #7a8a9a;
+}
+
+.btn-retour {
+    padding: 0.55rem 1.2rem;
+    background: transparent;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #5a6a7a;
+    transition: 0.2s;
+}
+
+.btn-retour:hover {
+    background: #f4f6f8;
+    border-color: #b0bcc8;
+}
